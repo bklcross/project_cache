@@ -8,12 +8,13 @@ RUN pnpm install --frozen-lockfile
 COPY apps/api apps/api
 COPY packages/shared packages/shared
 RUN pnpm --filter @restaurant/shared build && pnpm --filter @restaurant/api build
-RUN pnpm --filter @restaurant/api deploy --prod /release
 
 FROM node:22-alpine AS runtime
 ENV NODE_ENV=production PORT=4000 DATA_DIR=/app/data
 WORKDIR /app
-COPY --from=build /release ./
+COPY --from=build /workspace/node_modules ./node_modules
+COPY --from=build /workspace/packages/shared ./packages/shared
+COPY --from=build /workspace/apps/api/package.json ./package.json
 COPY --from=build /workspace/apps/api/dist ./dist
 COPY data ./data
 EXPOSE 4000
