@@ -35,23 +35,23 @@ export default async function Inventory() {
           return (
             <div
               key={x.ingredientId}
-              className="table-row gap-3 md:grid-cols-[1.3fr_.7fr_.7fr_.6fr_1fr]"
+              className="table-row grid-cols-2 gap-3 md:grid-cols-[1.3fr_.7fr_.7fr_.6fr_1fr]"
             >
               <div>
                 <p className="font-semibold">{x.ingredient.name}</p>
                 <p className="text-xs muted">{x.ingredient.category}</p>
               </div>
-              <span>
+              <span className="text-right md:text-left">
                 {x.quantity} {x.ingredient.unit}
               </span>
-              <span className={variance < 0 ? 'text-red-700' : 'text-emerald-700'}>
+              <span className={variance < 0 ? 'text-sm text-red-300' : 'text-sm text-emerald-300'}>
                 {variance > 0 ? '+' : ''}
                 {variance.toFixed(1)}
               </span>
               <Badge tone={health < 0.4 ? 'danger' : health < 0.75 ? 'warn' : 'good'}>
                 {health < 0.4 ? 'critical' : health < 0.75 ? 'watch' : 'healthy'}
               </Badge>
-              <InventoryCount ingredientId={x.ingredientId} quantity={x.quantity} />
+              <div className="col-span-2 md:col-span-1"><InventoryCount ingredientId={x.ingredientId} quantity={x.quantity} /></div>
             </div>
           );
         })}

@@ -25,7 +25,7 @@ export function PrepForm() {
         router.refresh();
       }}
     >
-      <select className="rounded-xl border border-black/10 px-3">
+      <select className="rounded-xl border border-white/10 bg-[#0f1211] px-3 text-white outline-none focus:border-amber/50">
         <option value="chicken_breast">Chicken breast</option>
       </select>
       <Input

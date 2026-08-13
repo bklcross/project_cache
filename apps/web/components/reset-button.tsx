@@ -8,7 +8,7 @@ export function ResetButton() {
   const [busy, setBusy] = useState(false);
   return (
     <Button
-      className="hidden bg-white text-ink shadow-sm hover:bg-mint sm:block"
+      className="hidden border border-white/10 bg-white/[.05] text-white/65 shadow-none hover:bg-white/10 hover:text-white sm:block"
       disabled={busy}
       onClick={async () => {
         setBusy(true);

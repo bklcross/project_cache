@@ -14,7 +14,7 @@ export function InventoryCount({
   const [value, setValue] = useState(String(quantity));
   return (
     <form
-      className="flex gap-2"
+      className="flex w-full gap-2"
       onSubmit={async (e) => {
         e.preventDefault();
         await fetch(`${clientApiBaseUrl}/inventory/counts`, {
@@ -27,7 +27,7 @@ export function InventoryCount({
     >
       <Input
         aria-label="Count quantity"
-        className="w-24"
+        className="min-w-0 flex-1 md:w-24 md:flex-none"
         type="number"
         step=".1"
         value={value}

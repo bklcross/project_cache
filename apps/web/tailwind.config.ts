@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#17211b',
-        forest: '#173f32',
-        mint: '#dff2e7',
-        cream: '#f6f4ed',
-        amber: '#e9a23b',
+        ink: '#111513',
+        forest: '#245c47',
+        mint: '#b9d8c8',
+        cream: '#191d1b',
+        amber: '#c88a3e',
       },
-      boxShadow: { soft: '0 14px 40px rgba(23,33,27,.08)' },
+      boxShadow: { soft: '0 18px 50px rgba(0,0,0,.22)' },
     },
   },
   plugins: [],

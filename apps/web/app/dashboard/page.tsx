@@ -15,22 +15,22 @@ export default async function DashboardPage() {
   return (
     <>
       <Header />
-      <section className="mb-8 flex items-end justify-between">
+      <section className="mb-7 flex items-end justify-between gap-6">
         <div>
           <p className="eyebrow">Saturday service plan</p>
-          <h1 className="metric mt-2 max-w-xl text-4xl leading-tight md:text-5xl">
+          <h1 className="metric mt-2 max-w-xl text-3xl leading-tight sm:text-4xl md:text-5xl">
             Know what the kitchen needs, before it needs it.
           </h1>
         </div>
         <div className="hidden text-right md:block">
-          <span className="text-sm font-semibold text-emerald-700">91% plan confidence</span>
+          <span className="text-sm font-semibold text-emerald-300">● 91% plan confidence</span>
           <p className="mt-1 text-xs muted">Based on 4 comparable weeks</p>
         </div>
       </section>
       <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {metrics.map(([label, value, Icon]) => (
           <Card key={label} className="relative overflow-hidden">
-            <Icon className="absolute right-4 top-4 text-forest/25" size={22} />
+            <Icon className="absolute right-4 top-4 text-amber/45" size={22} />
             <p className="text-sm muted">{label}</p>
             <p className="metric mt-3 text-3xl">{value}</p>
           </Card>
@@ -47,7 +47,7 @@ export default async function DashboardPage() {
           </div>
           <ForecastChart data={data.forecast} />
         </Card>
-        <Card className="bg-forest text-white">
+        <Card className="border-forest bg-gradient-to-br from-forest to-[#183b2f] text-white">
           <p className="eyebrow !text-amber">Tonight’s focus</p>
           <h2 className="metric mt-3 text-3xl">{data.risks[0]?.name ?? 'Inventory healthy'}</h2>
           <p className="mt-3 text-sm text-white/65">
@@ -71,21 +71,21 @@ export default async function DashboardPage() {
           </div>
           <a
             href="/purchasing"
-            className="flex items-center gap-1 text-sm font-semibold text-forest"
+            className="flex items-center gap-1 text-sm font-semibold text-amber transition hover:text-[#e6ad65]"
           >
             View all <ArrowUpRight size={15} />
           </a>
         </div>
         {data.recommendations.slice(0, 4).map((x) => (
-          <div key={x.id} className="table-row grid-cols-[1.3fr_.8fr_.7fr_.4fr]">
+          <div key={x.id} className="table-row grid-cols-[1fr_auto] gap-x-4 gap-y-2 sm:grid-cols-[1.3fr_.8fr_.7fr_.4fr]">
             <div>
               <p className="font-semibold">{x.ingredientName}</p>
               <p className="text-xs muted">{x.supplierName}</p>
             </div>
-            <span>
+            <span className="text-right sm:text-left">
               {x.recommendedQuantity} {x.unit}
             </span>
-            <span>${x.estimatedCost.toFixed(2)}</span>
+            <span className="text-sm muted sm:text-base sm:text-inherit">${x.estimatedCost.toFixed(2)}</span>
             <Badge tone={x.risk === 'high' ? 'danger' : x.risk === 'medium' ? 'warn' : 'good'}>
               {x.risk}
             </Badge>

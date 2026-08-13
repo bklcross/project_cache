@@ -42,7 +42,7 @@ export default async function Purchasing() {
                   {x.packageCount} packages · ${x.estimatedCost.toFixed(2)}
                 </p>
               </div>
-              <div className="rounded-xl bg-cream p-4 text-sm">
+              <div className="rounded-xl border border-white/[.06] bg-black/20 p-4 text-sm">
                 <p className="eyebrow">Why this amount</p>
                 <dl className="mt-3 space-y-2">
                   {[

@@ -23,9 +23,9 @@ export default async function YieldPage() {
           <Card key={x.ingredientId}>
             <p className="text-sm capitalize muted">{x.ingredientId.replaceAll('_', ' ')}</p>
             <p className="metric mt-3 text-4xl">{Math.round(x.predictedYield * 100)}%</p>
-            <div className="mt-4 h-2 overflow-hidden rounded-full bg-black/5">
+            <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[.07]">
               <div
-                className="h-full rounded-full bg-forest"
+                className="h-full rounded-full bg-amber"
                 style={{ width: `${x.predictedYield * 100}%` }}
               />
             </div>

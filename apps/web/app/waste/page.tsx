@@ -19,22 +19,22 @@ export default async function Waste() {
         <WasteForm />
       </Card>
       <div className="grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
-        <Card className="bg-ink text-white">
+        <Card className="border-amber/20 bg-gradient-to-br from-[#261c12] to-[#171513] text-white">
           <p className="eyebrow !text-amber">Period waste</p>
           <p className="metric mt-3 text-5xl">${total.toFixed(2)}</p>
           <p className="mt-2 text-sm text-white/50">Across {rows.length} records</p>
         </Card>
         <Card>
           {rows.map((x) => (
-            <div key={x.id} className="table-row grid-cols-[1fr_.7fr_.7fr]">
+            <div key={x.id} className="table-row grid-cols-[1fr_auto] gap-x-4 sm:grid-cols-[1fr_.7fr_.7fr]">
               <div>
                 <p className="font-semibold capitalize">{x.ingredientId.replaceAll('_', ' ')}</p>
                 <p className="text-xs capitalize muted">{x.reason}</p>
               </div>
-              <span>
+              <span className="text-right sm:text-left">
                 {x.quantity} {x.unit}
               </span>
-              <span className="text-right font-semibold">${x.cost.toFixed(2)}</span>
+              <span className="col-span-2 mt-1 text-right text-sm font-semibold text-amber sm:col-span-1 sm:mt-0">${x.cost.toFixed(2)}</span>
             </div>
           ))}
         </Card>

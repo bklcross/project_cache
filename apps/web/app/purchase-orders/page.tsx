@@ -38,7 +38,7 @@ export default async function Orders() {
                   {po.status !== 'received' && <ReceiveOrder id={po.id} items={po.items} />}
                 </div>
               </div>
-              <div className="mt-4 border-t border-black/5 pt-3">
+              <div className="mt-4 border-t border-white/[.07] pt-3">
                 {po.items.map((x) => (
                   <div key={x.ingredientId} className="flex justify-between py-1 text-sm">
                     <span>{x.ingredientId.replaceAll('_', ' ')}</span>

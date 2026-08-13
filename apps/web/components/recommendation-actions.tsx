@@ -25,9 +25,9 @@ export function RecommendationActions({
   if (status === 'ordered' || status === 'rejected')
     return <span className="text-sm capitalize muted">{status}</span>;
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex w-full flex-wrap gap-2 lg:w-auto">
       <Input
-        className="w-20"
+        className="min-w-20 flex-1 lg:flex-none"
         type="number"
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -43,7 +43,7 @@ export function RecommendationActions({
         {Number(value) === quantity ? 'Approve' : 'Update'}
       </Button>
       <Button
-        className="bg-transparent text-black/45 hover:bg-red-50 hover:text-red-700"
+        className="bg-transparent text-white/40 hover:bg-red-400/10 hover:text-red-300"
         onClick={() => send('reject')}
       >
         Reject

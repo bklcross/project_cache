@@ -25,7 +25,7 @@ export function WasteForm() {
         router.refresh();
       }}
     >
-      <select className="rounded-xl border border-black/10 px-3">
+      <select className="rounded-xl border border-white/10 bg-[#0f1211] px-3 text-white outline-none focus:border-amber/50">
         <option>Atlantic salmon</option>
       </select>
       <Input
@@ -34,7 +34,7 @@ export function WasteForm() {
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
       />
-      <select className="rounded-xl border border-black/10 px-3">
+      <select className="rounded-xl border border-white/10 bg-[#0f1211] px-3 text-white outline-none focus:border-amber/50">
         <option value="spoilage">Spoilage</option>
         <option value="overproduction">Overproduction</option>
       </select>
