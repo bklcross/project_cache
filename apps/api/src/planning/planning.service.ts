@@ -7,8 +7,17 @@ export class PlanningService {
   constructor(private readonly store: JsonStore) {}
 
   calculate(plan: ProductionPlanItem[]): IngredientRequirement[] {
+    this.store.data.plannedPrep = plan.filter((x) => x.portions > 0);
+    return this.requirements(this.store.data.plannedPrep);
+  }
+
+  current() {
+    return this.requirements(this.store.data.plannedPrep);
+  }
+
+  private requirements(plan: ProductionPlanItem[]): IngredientRequirement[] {
     const totals = new Map<string, number>();
-    for (const item of plan.filter((x) => x.portions > 0)) {
+    for (const item of plan) {
       const recipe = this.store.data.recipes.find((x) => x.id === item.recipeId);
       if (!recipe) throw new BadRequestException(`Recipe ${item.recipeId} not found`);
       for (const ingredient of recipe.ingredients) {

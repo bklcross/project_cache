@@ -2,10 +2,12 @@
 import type { IngredientRequirement, Recipe } from '@restaurant/shared';
 import { Check, TriangleAlert } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { clientApiBaseUrl } from '@/lib/client-api';
 import { Button, Card, Input } from './ui';
 
 export function ProductionPlanner({ recipes }: { recipes: Recipe[] }) {
+  const router = useRouter();
   const [portions, setPortions] = useState<Record<string, string>>({});
   const [requirements, setRequirements] = useState<IngredientRequirement[] | null>(null);
   return (
@@ -27,6 +29,7 @@ export function ProductionPlanner({ recipes }: { recipes: Recipe[] }) {
             body: JSON.stringify({ items: recipes.map((recipe) => ({ recipeId: recipe.id, portions: Number(portions[recipe.id] ?? 0) })) }),
           });
           setRequirements(await response.json());
+          router.refresh();
         }}>Calculate ingredients</Button>
       </Card>
       <Card>

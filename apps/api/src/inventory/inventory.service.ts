@@ -1,13 +1,24 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { JsonStore } from '../common/json-store.service';
+import { PlanningService } from '../planning/planning.service';
 @Injectable()
 export class InventoryService {
-  constructor(private readonly store: JsonStore) {}
+  constructor(
+    private readonly store: JsonStore,
+    private readonly planning: PlanningService,
+  ) {}
   findAll() {
-    return this.store.data.inventory.map((item) => ({
-      ...item,
-      ingredient: this.store.data.ingredients.find((x) => x.id === item.ingredientId),
-    }));
+    const needs = new Map(this.planning.current().map((x) => [x.ingredientId, x]));
+    return this.store.data.inventory.map((item) => {
+      const planned = needs.get(item.ingredientId);
+      return {
+        ...item,
+        plannedRequired: planned?.required ?? 0,
+        projectedQuantity: planned?.remaining ?? item.quantity,
+        shortage: planned?.shortage ?? 0,
+        ingredient: this.store.data.ingredients.find((x) => x.id === item.ingredientId),
+      };
+    });
   }
   findOne(id: string) {
     const item = this.findAll().find((x) => x.ingredientId === id);

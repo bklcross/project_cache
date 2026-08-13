@@ -5,6 +5,7 @@ import type {
   Ingredient,
   InventoryCount,
   InventoryItem,
+  ProductionPlanItem,
   Recipe,
 } from '@restaurant/shared';
 
@@ -13,6 +14,7 @@ export interface AppState {
   inventory: InventoryItem[];
   recipes: Recipe[];
   inventoryCounts: InventoryCount[];
+  plannedPrep: ProductionPlanItem[];
 }
 
 @Injectable()
@@ -33,6 +35,7 @@ export class JsonStore implements OnModuleInit {
       inventory: await load('inventory.json'),
       recipes: await load('recipes.json'),
       inventoryCounts: await load('inventory-counts.json'),
+      plannedPrep: [],
     };
   }
 }

@@ -1,10 +1,10 @@
 [
-  {"ingredientId":"chicken_breast","quantity":20,"incomingQuantity":0,"parLevel":70,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":23.5},
-  {"ingredientId":"fettuccine","quantity":28,"incomingQuantity":0,"parLevel":40,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":29},
-  {"ingredientId":"heavy_cream","quantity":12,"incomingQuantity":0,"parLevel":30,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":14},
-  {"ingredientId":"butter","quantity":13,"incomingQuantity":0,"parLevel":20,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":12.4},
-  {"ingredientId":"parmesan","quantity":10,"incomingQuantity":4,"parLevel":24,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":12},
-  {"ingredientId":"garlic","quantity":3,"incomingQuantity":0,"parLevel":8,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":3.7},
-  {"ingredientId":"salmon","quantity":8,"incomingQuantity":0,"parLevel":50,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":11},
-  {"ingredientId":"broccoli","quantity":15,"incomingQuantity":0,"parLevel":35,"lastCountedAt":"2026-08-11T18:00:00Z","theoreticalQuantity":16.5}
+  {"ingredientId":"chicken_breast","quantity":20,"parLevel":70,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"fettuccine","quantity":28,"parLevel":40,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"heavy_cream","quantity":12,"parLevel":30,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"butter","quantity":13,"parLevel":20,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"parmesan","quantity":10,"parLevel":24,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"garlic","quantity":3,"parLevel":8,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"salmon","quantity":8,"parLevel":50,"lastCountedAt":"2026-08-11T18:00:00Z"},
+  {"ingredientId":"broccoli","quantity":15,"parLevel":35,"lastCountedAt":"2026-08-11T18:00:00Z"}
 ]

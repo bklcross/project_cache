@@ -1,10 +1,10 @@
 [
-  {"id":"chicken_breast","name":"Chicken breast","unit":"lb","baselineYield":0.72,"safetyStock":14,"shelfLifeDays":4,"category":"Protein"},
-  {"id":"fettuccine","name":"Fettuccine","unit":"lb","baselineYield":1,"safetyStock":8,"shelfLifeDays":180,"category":"Dry goods"},
-  {"id":"heavy_cream","name":"Heavy cream","unit":"qt","baselineYield":0.98,"safetyStock":6,"shelfLifeDays":10,"category":"Dairy"},
-  {"id":"butter","name":"Butter","unit":"lb","baselineYield":0.98,"safetyStock":4,"shelfLifeDays":30,"category":"Dairy"},
-  {"id":"parmesan","name":"Parmesan","unit":"lb","baselineYield":0.94,"safetyStock":5,"shelfLifeDays":28,"category":"Dairy"},
-  {"id":"garlic","name":"Garlic","unit":"lb","baselineYield":0.86,"safetyStock":2,"shelfLifeDays":21,"category":"Produce"},
-  {"id":"salmon","name":"Atlantic salmon","unit":"lb","baselineYield":0.82,"safetyStock":10,"shelfLifeDays":3,"category":"Protein"},
-  {"id":"broccoli","name":"Broccoli","unit":"lb","baselineYield":0.78,"safetyStock":7,"shelfLifeDays":5,"category":"Produce"}
+  {"id":"chicken_breast","name":"Chicken breast","unit":"lb","category":"Protein","unitCost":3.6},
+  {"id":"fettuccine","name":"Fettuccine","unit":"lb","category":"Dry goods","unitCost":1.45},
+  {"id":"heavy_cream","name":"Heavy cream","unit":"qt","category":"Dairy","unitCost":4.2},
+  {"id":"butter","name":"Butter","unit":"lb","category":"Dairy","unitCost":3.8},
+  {"id":"parmesan","name":"Parmesan","unit":"lb","category":"Dairy","unitCost":7.5},
+  {"id":"garlic","name":"Garlic","unit":"lb","category":"Produce","unitCost":2.4},
+  {"id":"salmon","name":"Atlantic salmon","unit":"lb","category":"Protein","unitCost":10},
+  {"id":"broccoli","name":"Broccoli","unit":"lb","category":"Produce","unitCost":1.9}
 ]

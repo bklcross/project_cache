@@ -3,11 +3,21 @@ export interface Ingredient {
   name: string;
   unit: string;
   category: string;
+  unitCost: number;
 }
 export interface InventoryItem {
   ingredientId: string;
   quantity: number;
+  parLevel: number;
   lastCountedAt: string;
+}
+export interface CreateIngredient {
+  name: string;
+  unit: string;
+  category: string;
+  unitCost: number;
+  quantity: number;
+  parLevel: number;
 }
 export interface RecipeIngredient {
   ingredientId: string;

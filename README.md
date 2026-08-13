@@ -58,6 +58,7 @@ API routes:
 - `GET /api/inventory`
 - `POST /api/inventory/counts`
 - `GET /api/ingredients`
+- `POST /api/ingredients`
 - `GET /api/recipes`
 - `POST /api/recipes`
 - `POST /api/plans/calculate`
