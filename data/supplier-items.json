@@ -1,0 +1,12 @@
+[
+  {"id":"si_chicken_n","supplierId":"supplier_north","ingredientId":"chicken_breast","packageQuantity":10,"packageUnit":"lb","price":38},
+  {"id":"si_chicken_m","supplierId":"supplier_market","ingredientId":"chicken_breast","packageQuantity":8,"packageUnit":"lb","price":32.8},
+  {"id":"si_pasta","supplierId":"supplier_north","ingredientId":"fettuccine","packageQuantity":10,"packageUnit":"lb","price":18},
+  {"id":"si_cream","supplierId":"supplier_market","ingredientId":"heavy_cream","packageQuantity":4,"packageUnit":"qt","price":22},
+  {"id":"si_butter","supplierId":"supplier_north","ingredientId":"butter","packageQuantity":5,"packageUnit":"lb","price":21},
+  {"id":"si_parm","supplierId":"supplier_market","ingredientId":"parmesan","packageQuantity":5,"packageUnit":"lb","price":39},
+  {"id":"si_garlic","supplierId":"supplier_market","ingredientId":"garlic","packageQuantity":5,"packageUnit":"lb","price":16},
+  {"id":"si_salmon_n","supplierId":"supplier_north","ingredientId":"salmon","packageQuantity":10,"packageUnit":"lb","price":96},
+  {"id":"si_salmon_m","supplierId":"supplier_market","ingredientId":"salmon","packageQuantity":8,"packageUnit":"lb","price":80},
+  {"id":"si_broc","supplierId":"supplier_north","ingredientId":"broccoli","packageQuantity":10,"packageUnit":"lb","price":24}
+]

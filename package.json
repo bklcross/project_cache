@@ -1,0 +1,13 @@
+{
+  "name": "restaurant-intelligence",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c magenta,cyan \"pnpm --filter @restaurant/api dev\" \"pnpm --filter @restaurant/web dev\"",
+    "build": "pnpm --filter @restaurant/shared build && pnpm --filter @restaurant/api build && pnpm --filter @restaurant/web build",
+    "typecheck": "pnpm --filter @restaurant/shared build && pnpm -r --if-present typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.5.3"
+  }
+}

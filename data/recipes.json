@@ -1,0 +1,4 @@
+[
+  {"id":"recipe_alfredo","menuItemId":"chicken_alfredo","name":"Chicken Alfredo","yieldPortions":1,"ingredients":[{"kind":"ingredient","id":"chicken_breast","quantity":0.36},{"kind":"ingredient","id":"fettuccine","quantity":0.25},{"kind":"prep","id":"prep_alfredo_sauce","quantity":1}]},
+  {"id":"recipe_salmon","menuItemId":"salmon_plate","name":"Cedar Salmon","yieldPortions":1,"ingredients":[{"kind":"ingredient","id":"salmon","quantity":0.48},{"kind":"ingredient","id":"broccoli","quantity":0.3}]}
+]

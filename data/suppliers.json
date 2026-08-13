@@ -1,0 +1,4 @@
+[
+  {"id":"supplier_north","name":"Northwest Provisions","leadTimeDays":2,"minimumOrder":100},
+  {"id":"supplier_market","name":"Market & Main","leadTimeDays":1,"minimumOrder":75}
+]

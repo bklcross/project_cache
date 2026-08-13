@@ -1,0 +1,5 @@
+[
+  {"date":"2026-07-18","menuItemId":"chicken_alfredo","quantity":132},{"date":"2026-07-25","menuItemId":"chicken_alfredo","quantity":141},{"date":"2026-08-01","menuItemId":"chicken_alfredo","quantity":151},{"date":"2026-08-08","menuItemId":"chicken_alfredo","quantity":160},
+  {"date":"2026-07-18","menuItemId":"salmon_plate","quantity":78},{"date":"2026-07-25","menuItemId":"salmon_plate","quantity":82},{"date":"2026-08-01","menuItemId":"salmon_plate","quantity":86},{"date":"2026-08-08","menuItemId":"salmon_plate","quantity":91},
+  {"date":"2026-07-19","menuItemId":"chicken_alfredo","quantity":108},{"date":"2026-07-26","menuItemId":"chicken_alfredo","quantity":112},{"date":"2026-08-02","menuItemId":"chicken_alfredo","quantity":118},{"date":"2026-08-09","menuItemId":"chicken_alfredo","quantity":123}
+]

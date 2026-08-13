@@ -1,0 +1,71 @@
+name: Deploy API to ECS Express Mode
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/api/**
+      - packages/shared/**
+      - data/**
+      - Dockerfile
+      - .dockerignore
+      - .npmrc
+      - package.json
+      - pnpm-lock.yaml
+      - pnpm-workspace.yaml
+      - .github/workflows/deploy-api.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_ACCOUNT_ID: '129405039505'
+  AWS_REGION: us-west-1
+  ECR_REPOSITORY: restaurant-intelligence-api
+  ECS_CLUSTER: default
+  ECS_SERVICE: restaurant-intelligence-api
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: arn:aws:iam::129405039505:role/restaurant-intelligence-github-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:latest
+
+      - uses: aws-actions/amazon-ecs-deploy-express-service@v1
+        with:
+          service-name: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          execution-role-arn: arn:aws:iam::129405039505:role/leoness-ecs-task-execution
+          infrastructure-role-arn: arn:aws:iam::129405039505:role/leoness-ecs-express-infrastructure
+          container-port: '4000'
+          environment-variables: |
+            [
+              {"name":"NODE_ENV","value":"production"},
+              {"name":"CORS_ORIGINS","value":"*"}
+            ]
+          health-check-path: /api/health
+          cpu: '1024'
+          memory: '2048'
+          min-task-count: 1
+          max-task-count: 1
