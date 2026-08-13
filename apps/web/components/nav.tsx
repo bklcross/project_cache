@@ -1,22 +1,14 @@
 import Link from 'next/link';
 import {
-  BarChart3,
   Boxes,
-  ChartNoAxesCombined,
-  ClipboardList,
   ChefHat,
-  Leaf,
-  ShoppingBasket,
-  Trash2,
+  NotebookPen,
+  Soup,
 } from 'lucide-react';
 const links = [
-  ['/dashboard', 'Overview', BarChart3],
   ['/inventory', 'Inventory', Boxes],
-  ['/forecast', 'Forecast', ChartNoAxesCombined],
-  ['/purchasing', 'Purchasing', ShoppingBasket],
-  ['/purchase-orders', 'Orders', ClipboardList],
-  ['/yield', 'Yield', Leaf],
-  ['/waste', 'Waste', Trash2],
+  ['/recipes', 'Recipes', NotebookPen],
+  ['/planner', 'Plan prep', Soup],
 ] as const;
 function NavLinks({ mobile = false }: { mobile?: boolean }) {
   return links.map(([href, label, Icon]) => (
@@ -41,15 +33,15 @@ export function Nav() {
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-amber text-ink"><ChefHat size={20} /></span>
           <span>Juniper <span className="text-amber">Kitchen</span></span>
         </div>
-        <p className="text-xs text-white/45">Restaurant intelligence</p>
+        <p className="text-xs text-white/45">Inventory & prep planning</p>
       </div>
       <nav className="space-y-1">
         <NavLinks />
       </nav>
       <div className="mt-auto rounded-2xl border border-white/[.06] bg-white/[.03] p-4">
-        <p className="eyebrow !text-amber">Live service</p>
-        <p className="mt-2 text-sm">Saturday dinner</p>
-        <p className="mt-1 text-xs text-white/45">Forecast synced locally</p>
+        <p className="eyebrow !text-amber">Simple kitchen tools</p>
+        <p className="mt-2 text-sm">Know what you have.</p>
+        <p className="mt-1 text-xs text-white/45">Plan what you need.</p>
       </div>
     </aside>
     <nav className="fixed inset-x-3 bottom-3 z-30 flex overflow-x-auto rounded-2xl border border-white/10 bg-[#111513]/95 p-1.5 shadow-2xl backdrop-blur lg:hidden">

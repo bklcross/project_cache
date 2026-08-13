@@ -1,4 +1,4 @@
 [
-  {"id":"recipe_alfredo","menuItemId":"chicken_alfredo","name":"Chicken Alfredo","yieldPortions":1,"ingredients":[{"kind":"ingredient","id":"chicken_breast","quantity":0.36},{"kind":"ingredient","id":"fettuccine","quantity":0.25},{"kind":"prep","id":"prep_alfredo_sauce","quantity":1}]},
-  {"id":"recipe_salmon","menuItemId":"salmon_plate","name":"Cedar Salmon","yieldPortions":1,"ingredients":[{"kind":"ingredient","id":"salmon","quantity":0.48},{"kind":"ingredient","id":"broccoli","quantity":0.3}]}
+  {"id":"recipe_alfredo","name":"Chicken Alfredo","yieldPortions":10,"ingredients":[{"ingredientId":"chicken_breast","quantity":3.6},{"ingredientId":"fettuccine","quantity":2.5},{"ingredientId":"heavy_cream","quantity":2},{"ingredientId":"butter","quantity":0.75},{"ingredientId":"parmesan","quantity":1.25},{"ingredientId":"garlic","quantity":0.15}]},
+  {"id":"recipe_salmon","name":"Cedar Salmon","yieldPortions":10,"ingredients":[{"ingredientId":"salmon","quantity":4.8},{"ingredientId":"broccoli","quantity":3}]}
 ]

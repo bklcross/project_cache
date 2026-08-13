@@ -1,7 +1,0 @@
-[
-  {"ingredientId":"chicken_breast","supplierId":"supplier_north","date":"2026-07-20","rawWeight":40,"usableWeight":29.1},
-  {"ingredientId":"chicken_breast","supplierId":"supplier_market","date":"2026-07-28","rawWeight":32,"usableWeight":23.8},
-  {"ingredientId":"chicken_breast","supplierId":"supplier_market","date":"2026-08-06","rawWeight":24,"usableWeight":17.9},
-  {"ingredientId":"salmon","supplierId":"supplier_north","date":"2026-08-03","rawWeight":30,"usableWeight":23.4},
-  {"ingredientId":"broccoli","supplierId":"supplier_north","date":"2026-08-04","rawWeight":20,"usableWeight":14.8}
-]

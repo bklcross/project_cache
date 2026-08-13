@@ -1,6 +1,6 @@
 # Restaurant Intelligence
 
-A local, TypeScript-first restaurant operations prototype. It turns historical menu sales into explainable purchase recommendations, supports manager approval and purchase orders, and records receiving, inventory, prep yield, and waste data.
+A focused, TypeScript-first kitchen planning prototype. It helps a restaurant track current inventory, save recipes, and calculate the ingredients needed for planned production.
 
 ## Run locally
 
@@ -35,23 +35,29 @@ Browser → Next.js App Router (SSR + focused client forms) → NestJS REST API
 
 The repository uses plain pnpm workspaces:
 
-- `apps/web` — Next.js, React, Tailwind, shadcn-style UI primitives, and Recharts
+- `apps/web` — Next.js, React, Tailwind, and small shared UI primitives
 - `apps/api` — one modular NestJS server
 - `packages/shared` — domain interfaces shared by both applications
 - `data` — immutable prototype seed data
 
-All calculations live in NestJS services. React pages request completed forecasts, yields, recommendations, and explanations. JSON reads are isolated in `JsonStore`; mutations live only in server memory and are restored using `POST /api/demo/reset` or the development UI button.
+Planning calculations live in NestJS rather than React. JSON reads are isolated in `JsonStore`; inventory updates and newly created recipes are stored in server memory for the prototype. Restarting the API restores the seed data.
 
 ## Domain flow
 
-1. `ForecastingService` weighs four comparable weekdays 40/30/20/10 and applies deterministic trend and seasonal modifiers.
-2. `RecipeService` recursively expands menu and prep recipes, accumulating usable ingredient demand and rejecting cycles.
-3. `YieldService` blends baseline, full history, recent prep sessions, and supplier observations.
-4. `PurchasingService` converts usable demand to raw demand, subtracts stock and incoming orders, adds safety stock, rounds to supplier package sizes, and compares usable supplier cost.
-5. Approved recommendations generate purchase orders. Receiving updates in-memory inventory.
+1. View and update current ingredient inventory.
+2. Create a recipe with its batch yield and ingredient quantities.
+3. Enter planned portions for one or more recipes.
+4. `PlanningService` scales and combines the recipes, then shows required quantities, inventory remaining, and shortages.
 
 ## Main routes
 
-Web pages: `/dashboard`, `/inventory`, `/forecast`, `/purchasing`, `/purchase-orders`, `/yield`, and `/waste`.
+Web pages: `/inventory`, `/recipes`, and `/planner`.
 
-The API exposes the corresponding REST resources under `/api`, including mutations for counts, prep sessions, waste, recommendation decisions, purchase orders, receiving, and demo reset.
+API routes:
+
+- `GET /api/inventory`
+- `POST /api/inventory/counts`
+- `GET /api/ingredients`
+- `GET /api/recipes`
+- `POST /api/recipes`
+- `POST /api/plans/calculate`
