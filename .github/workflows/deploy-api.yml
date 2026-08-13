@@ -19,7 +19,7 @@ on:
 
 permissions:
   contents: read
-  # AWS access is granted through the repository-scoped IAM OIDC role.
+  # AWS access is granted through a repository- and branch-scoped IAM OIDC role.
   id-token: write
 
 env:
