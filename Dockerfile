@@ -13,10 +13,12 @@ FROM node:22-alpine AS runtime
 ENV NODE_ENV=production PORT=4000 DATA_DIR=/app/data
 WORKDIR /app
 COPY --from=build /workspace/node_modules ./node_modules
+COPY --from=build /workspace/apps/api/node_modules ./apps/api/node_modules
 COPY --from=build /workspace/packages/shared ./packages/shared
-COPY --from=build /workspace/apps/api/package.json ./package.json
-COPY --from=build /workspace/apps/api/dist ./dist
-COPY data ./data
+COPY --from=build /workspace/apps/api/package.json ./apps/api/package.json
+COPY --from=build /workspace/apps/api/dist ./apps/api/dist
+COPY data /app/data
 EXPOSE 4000
 USER node
+WORKDIR /app/apps/api
 CMD ["node", "dist/main.js"]
