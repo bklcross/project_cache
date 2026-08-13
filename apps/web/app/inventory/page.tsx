@@ -1,5 +1,4 @@
 import { Header } from '@/components/header';
-import { IngredientForm } from '@/components/ingredient-form';
 import { InventoryCount } from '@/components/inventory-count';
 import { PageHeading } from '@/components/page-heading';
 import { Badge, Card } from '@/components/ui';
@@ -46,8 +45,7 @@ export default async function Inventory() {
           <p className="metric mt-1 text-3xl">{prepShortages}</p>
         </Card>
       </div>
-      <div className="grid items-start gap-6 xl:grid-cols-[1fr_22rem]">
-        <Card className="min-w-0">
+      <Card className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-lg font-bold">All ingredients</h2>
             <span className="text-xs muted">Last count {lastCounted}</span>
@@ -77,13 +75,7 @@ export default async function Inventory() {
               </div>
             );
           })}
-        </Card>
-        <Card>
-          <h2 className="text-lg font-bold">Add ingredient</h2>
-          <p className="mt-1 text-sm muted">New ingredients are immediately available in recipes.</p>
-          <IngredientForm />
-        </Card>
-      </div>
+      </Card>
     </>
   );
 }

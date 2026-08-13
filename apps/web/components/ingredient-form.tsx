@@ -16,9 +16,10 @@ export function IngredientForm() {
   return (
     <form className="mt-5 grid gap-4 sm:grid-cols-2" onSubmit={async (event) => {
       event.preventDefault();
+      const form = event.currentTarget;
       setBusy(true);
       setError('');
-      const values = Object.fromEntries(new FormData(event.currentTarget));
+      const values = Object.fromEntries(new FormData(form));
       const response = await fetch(`${clientApiBaseUrl}/ingredients`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -35,7 +36,7 @@ export function IngredientForm() {
         const body = await response.json();
         setError(Array.isArray(body.message) ? body.message.join(', ') : body.message);
       } else {
-        event.currentTarget.reset();
+        form.reset();
         router.refresh();
       }
       setBusy(false);
