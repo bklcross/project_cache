@@ -2,6 +2,10 @@
 
 AWS account: `129405039505`
 
+Deployed non-secret resource identifiers are recorded in `deploy/aws.json`. Build and deployment behavior is defined by `amplify.yml`, `Dockerfile`, and `.github/workflows/deploy-api.yml`.
+
+After the one-time interactive GitHub repository connection, `deploy/configure-amplify.sh` reapplies the complete non-secret Amplify app and branch configuration through AWS CLI.
+
 ## Recommended topology
 
 ```text
@@ -54,7 +58,7 @@ NEXT_PUBLIC_API_BASE_URL=https://your-api-host/api
 
 Keep Amplify continuous deployment enabled for the connected `main` branch. Amplify then deploys the client automatically on every push to `main`; no separate GitHub Actions workflow is needed for the UI.
 
-`API_BASE_URL` is used by Next.js Server Components during SSR. `NEXT_PUBLIC_API_BASE_URL` is compiled into the focused Client Components for browser mutations. The initial prototype deployment permits every CORS origin so the first Amplify deployment works. After Amplify assigns its URL, replace `CORS_ORIGINS=*` in the workflow with that exact origin.
+`API_BASE_URL` is used by Next.js Server Components during SSR. `NEXT_PUBLIC_API_BASE_URL` is compiled into the focused Client Components for browser mutations. The API workflow permits browser requests from the deployed Amplify `main` URL.
 
 ## 3. Domains and validation
 

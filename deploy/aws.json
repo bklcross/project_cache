@@ -1,0 +1,24 @@
+{
+  "accountId": "129405039505",
+  "region": "us-west-1",
+  "web": {
+    "service": "Amplify Hosting",
+    "appId": "d5dbgzk4ramsj",
+    "appName": "restaurant-intelligence-web",
+    "branch": "main",
+    "appRoot": "apps/web",
+    "platform": "WEB_COMPUTE",
+    "url": "https://main.d5dbgzk4ramsj.amplifyapp.com",
+    "autoBuild": true
+  },
+  "api": {
+    "service": "ECS Express Mode",
+    "cluster": "default",
+    "serviceName": "restaurant-intelligence-api",
+    "ecrRepository": "restaurant-intelligence-api",
+    "containerPort": 4000,
+    "healthCheckPath": "/api/health",
+    "desiredTasks": 1,
+    "url": "https://re-d82ff4b94ca14655a4b37fc6084604d2.ecs.us-west-1.on.aws"
+  }
+}
