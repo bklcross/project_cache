@@ -14,7 +14,10 @@ export class IngredientService {
     const name = input.name.trim();
     if (!name || !input.unit || !input.category)
       throw new BadRequestException('Name, unit, and category are required');
-    if (input.quantity < 0 || input.parLevel < 0 || input.unitCost < 0)
+    const quantity = input.quantity ?? 0;
+    const parLevel = input.parLevel ?? 0;
+    const unitCost = input.unitCost ?? 0;
+    if (quantity < 0 || parLevel < 0 || unitCost < 0)
       throw new BadRequestException('Inventory values cannot be negative');
     if (this.store.data.ingredients.some((x) => x.name.toLowerCase() === name.toLowerCase()))
       throw new BadRequestException('Ingredient already exists');
@@ -25,13 +28,13 @@ export class IngredientService {
       name,
       unit: input.unit,
       category: input.category,
-      unitCost: input.unitCost,
+      unitCost,
     };
     this.store.data.ingredients.push(ingredient);
     this.store.data.inventory.push({
       ingredientId: id,
-      quantity: input.quantity,
-      parLevel: input.parLevel,
+      quantity,
+      parLevel,
       lastCountedAt: new Date().toISOString(),
     });
     return ingredient;

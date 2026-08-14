@@ -1,6 +1,5 @@
 import type { Ingredient, Recipe } from '@restaurant/shared';
 import { Header } from '@/components/header';
-import { IngredientForm } from '@/components/ingredient-form';
 import { PageHeading } from '@/components/page-heading';
 import { RecipeBuilder } from '@/components/recipe-builder';
 import { Card } from '@/components/ui';
@@ -27,15 +26,6 @@ export default async function RecipesPage() {
         <Card>
           <h2 className="text-lg font-bold">Create recipe</h2>
           <p className="mt-1 text-sm muted">Enter the batch yield and total ingredient amounts.</p>
-          <details className="mt-5 rounded-xl border border-white/[.07] bg-black/10 p-4">
-            <summary className="cursor-pointer text-sm font-semibold text-amber">
-              Need a new ingredient? Add it here
-            </summary>
-            <p className="mt-2 text-sm muted">
-              It will be added to inventory and available in the recipe list.
-            </p>
-            <IngredientForm />
-          </details>
           <RecipeBuilder ingredients={ingredients} />
         </Card>
         <div className="space-y-4">
