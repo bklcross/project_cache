@@ -1,6 +1,6 @@
-# Restaurant Intelligence
+# Antonio AI
 
-A focused, TypeScript-first kitchen planning prototype. It helps a restaurant track current inventory, save recipes, and calculate the ingredients needed for planned production.
+A focused kitchen planning tool inspired by Chef Antonio Friscia. It helps restaurants track current inventory, save recipes, and calculate the ingredients needed for planned production.
 
 ## Run locally
 

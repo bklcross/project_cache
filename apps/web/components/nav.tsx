@@ -31,7 +31,7 @@ export function Nav() {
       <div className="mb-10 px-2">
         <div className="mb-2 flex items-center gap-2 text-lg font-bold">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-amber text-ink"><ChefHat size={20} /></span>
-          <span>Juniper <span className="text-amber">Kitchen</span></span>
+          <span>Antonio <span className="text-amber">AI</span></span>
         </div>
         <p className="text-xs text-white/45">Inventory & prep planning</p>
       </div>

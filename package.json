@@ -1,5 +1,5 @@
 {
-  "name": "restaurant-intelligence",
+  "name": "antonio-ai",
   "private": true,
   "scripts": {
     "dev": "concurrently -n api,web -c magenta,cyan \"pnpm --filter @restaurant/api dev\" \"pnpm --filter @restaurant/web dev\"",

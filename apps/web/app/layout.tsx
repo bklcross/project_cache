@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Nav } from '@/components/nav';
 export const metadata: Metadata = {
-  title: 'Juniper Intelligence',
-  description: 'Restaurant operations intelligence',
+  title: 'Antonio AI',
+  description: 'Simple inventory, recipe, and prep planning for chefs',
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
