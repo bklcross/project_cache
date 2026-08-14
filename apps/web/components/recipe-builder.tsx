@@ -18,7 +18,7 @@ export function RecipeBuilder({ ingredients: initialIngredients }: { ingredients
   const [yieldPortions, setYield] = useState('10');
   const [rows, setRows] = useState<Row[]>([{ ingredientId: initialIngredients[0]?.id ?? '', quantity: '' }]);
   const [addingAt, setAddingAt] = useState<number | null>(null);
-  const [newIngredient, setNewIngredient] = useState({ name: '', category: 'Produce', unit: 'lb' });
+  const [newIngredient, setNewIngredient] = useState({ name: '', category: 'Produce', unit: 'lb', unitCost: '' });
   const [ingredientError, setIngredientError] = useState('');
 
   const update = (index: number, values: Partial<Row>) =>
@@ -29,7 +29,7 @@ export function RecipeBuilder({ ingredients: initialIngredients }: { ingredients
     const response = await fetch(`${clientApiBaseUrl}/ingredients`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newIngredient),
+      body: JSON.stringify({ ...newIngredient, unitCost: Number(newIngredient.unitCost) }),
     });
     const body = await response.json();
     if (!response.ok) {
@@ -40,7 +40,7 @@ export function RecipeBuilder({ ingredients: initialIngredients }: { ingredients
     setIngredients((current) => [...current, ingredient]);
     if (addingAt !== null) update(addingAt, { ingredientId: ingredient.id });
     setAddingAt(null);
-    setNewIngredient({ name: '', category: 'Produce', unit: 'lb' });
+    setNewIngredient({ name: '', category: 'Produce', unit: 'lb', unitCost: '' });
   };
 
   return (
@@ -85,10 +85,11 @@ export function RecipeBuilder({ ingredients: initialIngredients }: { ingredients
                       <p className="text-sm font-semibold">New ingredient</p>
                       <button aria-label="Cancel" className="text-white/45 hover:text-white" onClick={() => setAddingAt(null)} type="button"><X size={16} /></button>
                     </div>
-                    <div className="grid gap-2 sm:grid-cols-[1fr_.8fr_.6fr_auto]">
+                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-[1fr_.8fr_.55fr_.65fr_auto]">
                       <Input autoFocus placeholder="Ingredient name" value={newIngredient.name} onChange={(e) => setNewIngredient((x) => ({ ...x, name: e.target.value }))} />
                       <select className={selectClass} value={newIngredient.category} onChange={(e) => setNewIngredient((x) => ({ ...x, category: e.target.value }))}>{categories.map((x) => <option key={x}>{x}</option>)}</select>
                       <select className={selectClass} value={newIngredient.unit} onChange={(e) => setNewIngredient((x) => ({ ...x, unit: e.target.value }))}>{units.map((x) => <option key={x}>{x}</option>)}</select>
+                      <Input min="0" placeholder="Cost / unit" step=".01" type="number" value={newIngredient.unitCost} onChange={(e) => setNewIngredient((x) => ({ ...x, unitCost: e.target.value }))} />
                       <Button disabled={!newIngredient.name.trim()} onClick={createIngredient} type="button">Add</Button>
                     </div>
                     {ingredientError && <p className="mt-2 text-sm text-red-300">{ingredientError}</p>}

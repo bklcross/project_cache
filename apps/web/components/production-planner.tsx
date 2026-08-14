@@ -10,6 +10,7 @@ export function ProductionPlanner({ recipes }: { recipes: Recipe[] }) {
   const router = useRouter();
   const [portions, setPortions] = useState<Record<string, string>>({});
   const [requirements, setRequirements] = useState<IngredientRequirement[] | null>(null);
+  const totalCost = requirements?.reduce((total, item) => total + item.estimatedCost, 0) ?? 0;
   return (
     <div className="grid items-start gap-6 xl:grid-cols-[.8fr_1.2fr]">
       <Card>
@@ -33,18 +34,30 @@ export function ProductionPlanner({ recipes }: { recipes: Recipe[] }) {
         }}>Calculate ingredients</Button>
       </Card>
       <Card>
-        <h2 className="text-lg font-bold">Ingredient needs</h2>
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="text-lg font-bold">Ingredient needs</h2>
+          {requirements && requirements.length > 0 && (
+            <div className="text-right">
+              <p className="text-xs muted">Estimated prep cost</p>
+              <p className="metric text-2xl text-amber">${totalCost.toFixed(2)}</p>
+            </div>
+          )}
+        </div>
         {!requirements ? <p className="mt-3 text-sm muted">Your ingredient totals will appear here.</p> :
           requirements.length === 0 ? <p className="mt-3 text-sm muted">Enter at least one planned portion.</p> :
           <div className="mt-4">
             {requirements.map((item) => (
-              <div className="table-row grid-cols-[1fr_auto] gap-3 sm:grid-cols-[1fr_.55fr_.55fr_.55fr]" key={item.ingredientId}>
-                <div><p className="font-semibold">{item.name}</p><p className="text-xs muted">{item.unit}</p></div>
+              <div className="table-row grid-cols-[1fr_auto] gap-3 sm:grid-cols-[1fr_.55fr_.55fr_.55fr_.6fr]" key={item.ingredientId}>
+                <div><p className="font-semibold">{item.name}</p><p className="text-xs muted">${item.unitCost.toFixed(2)} / {item.unit}</p></div>
                 <div className="text-right sm:text-left"><p className="text-xs muted">Need</p><p>{item.required}</p></div>
                 <div><p className="text-xs muted">On hand</p><p>{item.onHand}</p></div>
                 <div className={item.shortage ? 'text-red-300' : 'text-emerald-300'}>
                   <p className="flex items-center gap-1 text-xs">{item.shortage ? <TriangleAlert size={12} /> : <Check size={12} />}{item.shortage ? 'Short' : 'Remaining'}</p>
                   <p>{item.shortage || item.remaining}</p>
+                </div>
+                <div className="col-span-2 text-right sm:col-span-1">
+                  <p className="text-xs muted">Cost</p>
+                  <p className="font-semibold">${item.estimatedCost.toFixed(2)}</p>
                 </div>
               </div>
             ))}

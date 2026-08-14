@@ -33,10 +33,12 @@ export class PlanningService {
         ingredientId,
         name: ingredient?.name ?? ingredientId,
         unit: ingredient?.unit ?? '',
+        unitCost: ingredient?.unitCost ?? 0,
         required,
         onHand,
         remaining: Number(Math.max(0, onHand - required).toFixed(2)),
         shortage: Number(Math.max(0, required - onHand).toFixed(2)),
+        estimatedCost: Number((required * (ingredient?.unitCost ?? 0)).toFixed(2)),
       };
     });
   }

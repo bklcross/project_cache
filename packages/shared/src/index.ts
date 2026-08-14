@@ -43,8 +43,10 @@ export interface IngredientRequirement {
   ingredientId: string;
   name: string;
   unit: string;
+  unitCost: number;
   required: number;
   onHand: number;
   remaining: number;
   shortage: number;
+  estimatedCost: number;
 }
